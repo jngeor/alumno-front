@@ -12,6 +12,8 @@
             <th>Apellidos</th>
             <th>Edad</th>
             <th>Teléfono</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -22,13 +24,32 @@
               <td>{{ alumno.apellidos }}</td>
               <td>{{ alumno.edad }}</td>
               <td>{{ alumno.telefono }}</td>
-            </tr>
+              <td>
+                <button class="btn btn-warning" (click)="seleccionarAlumno(alumno)">Editar</button>
+              </td>    
+              <td>
+                <button class="btn btn-danger" (click)="eliminarAlumno(alumno.id!)">Eliminar</button>
+              </td>                          
+            </tr>           
           }
         </tbody>
       </table>
     </div>
     @if (mostrarFormulario()) {
       <app-alumno-form (alumnoAgregado)="alumnoAgregado()"></app-alumno-form>
+    }
+    @if (alumnoSeleccionado() !== null) {
+      <app-alumno-edit 
+        [alumno]="alumnoSeleccionado()!" 
+        (alumnoActualizado)="cerrarEdicion(); cargarAlumnos()">
+      </app-alumno-edit>
+    }
+
+    @if (alumnoEliminarId() !== null) {
+      <app-alumno-delete 
+        [alumnoId]="alumnoEliminarId()!" 
+        (alumnoEliminado)="cerrarEliminacion(); cargarAlumnos()">
+      </app-alumno-delete>
     }    
   </div>
   

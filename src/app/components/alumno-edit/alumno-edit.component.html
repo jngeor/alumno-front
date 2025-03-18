@@ -1,1 +1,31 @@
-<p>alumno-edit works!</p>
+<div class="card mt-4">
+    <div class="card-header bg-warning text-dark">
+      <h4>Editar Alumno</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="alumnoForm" (ngSubmit)="actualizarAlumno()">
+        <div class="mb-3">
+          <label class="form-label">Nombres</label>
+          <input type="text" class="form-control" formControlName="nombres">
+        </div>
+  
+        <div class="mb-3">
+          <label class="form-label">Apellidos</label>
+          <input type="text" class="form-control" formControlName="apellidos">
+        </div>
+  
+        <div class="mb-3">
+          <label class="form-label">Edad</label>
+          <input type="number" class="form-control" formControlName="edad">
+        </div>
+  
+        <div class="mb-3">
+          <label class="form-label">Teléfono</label>
+          <input type="text" class="form-control" formControlName="telefono">
+        </div>
+  
+        <button type="submit" class="btn btn-warning">Actualizar Alumno</button>
+      </form>
+    </div>
+  </div>
+  
