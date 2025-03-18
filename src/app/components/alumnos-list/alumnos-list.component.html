@@ -1,0 +1,34 @@
+<div class="container mt-4">
+    <h2 class="text-center">Lista de Alumnos</h2>
+    <button class="btn btn-primary mb-3" (click)="toggleFormulario()">
+      {{ mostrarFormulario() ? 'Ocultar Formulario' : 'Agregar Nuevo Alumno' }}
+    </button>    
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Edad</th>
+            <th>Teléfono</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (alumno of alumnos(); track alumno.id) {
+            <tr>
+              <td>{{ alumno.id }}</td>
+              <td>{{ alumno.nombres }}</td>
+              <td>{{ alumno.apellidos }}</td>
+              <td>{{ alumno.edad }}</td>
+              <td>{{ alumno.telefono }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    @if (mostrarFormulario()) {
+      <app-alumno-form (alumnoAgregado)="alumnoAgregado()"></app-alumno-form>
+    }    
+  </div>
+  
